@@ -64,15 +64,16 @@ def largest_city(populations: dict[str, int]) -> tuple[str, int]:
     if len(populations) == 0:
         return ("", 0)
 
-    city = max(populations, key=populations.get)
-    returm(city, populations[city])
+    city = max(populations, key=lambda city: populations[city])
+    return (city, populations[city])
+
 
 def smallest_city(populations: dict[str, int]) -> tuple[str, int]:
     """Return (city, population) for the city with the smallest population."""
     if len(populations) == 0:
-        return("", 0)
-    city = min(populations, key=populations.get)
-    return(city, populations[city])
+        return ("", 0)
+    city = min(populations, key=lambda city: populations[city])
+    return (city, populations[city])
 
 
 def total_population(populations: dict[str, int]) -> int:
@@ -86,8 +87,9 @@ if __name__ == "__main__":
     city_population = {
         "Riga": 605000,
         "Daugavpils": 78000,
-        "Jelgava": 55000
-        "Valmiera": 23000
+        "Liepaja": 67000,
+        "Jelgava": 55000,
+        "Valmiera": 23000,
     }
 
     print(f"Average temperature: {average(temperatures):.1f}")
@@ -99,5 +101,3 @@ if __name__ == "__main__":
     print(f"Smallest city: {smallest[0]} - {smallest[1]}")
 
     print(f"Total population: {total_population(city_population)}")
-
-   
